@@ -50,12 +50,21 @@ Caveats
 
 - Only UTF-8 input is supported. If your system's default encoding is something other than UTF-8, I can't guarantee that `ticker` will work correctly (or at all). 7-bit ASCII input should be fine, because ASCII is a subset of UTF-8.
 
+Why?
+----
+
+Horizintally-scrolling text in conky seems like a simple task (I've seen people implement it using `sed` and some clever shell tricks), so why did I write a C program to do it?
+
+One reason is performance. When a program is called over and over, possibly every 100ms, it needs to be fast and light. Any `bash` script is likely to be slower than `ticker`, simply because a `bash` script would likely involve running several processes, while `ticker` is a self-contained, standalone executable.
+
+However, the main reason was as an excuse to teach myself more about C. After taking a college class on C and C++ programming, I wanted to try writing something in C that I would actually use. Because I don't have much experience in C, I can't guarantee that everything in `ticker` is written in the "best" possible way (constructive criticism is appreciated!), but it's a fairly simple program and it seems completely stable.
+
 License
 -------
 
 This program is distrubuted under the BSD license:
 
-    Copyright (c) 2010-2013, Adam R. Nelson
+    Copyright (c) 2013, Adam R. Nelson
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without modification,
